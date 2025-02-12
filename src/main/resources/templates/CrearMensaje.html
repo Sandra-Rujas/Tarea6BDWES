@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Mensaje a Ejemplar</title>
+    <link rel="stylesheet" th:href="@{../CSS/CrearMensaje.css}">
+</head>
+<body>
+
+    <!-- Header -->
+<header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>Añadir Mensaje</h1>
+                <a th:href="@{${session.userId == 1} ? '/ViveroAdmin' : '/ViveroPersonal'}">
+        <button class="logout-btn">Volver atrás</button></a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h2>Selecciona un Ejemplar para añadir un mensaje:</h2>
+        
+        <!-- Lista de Ejemplares -->
+        <div class="ejemplares-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID del Ejemplar</th>
+                        <th>Nombre del Ejemplar</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ejemplar : ${ejemplares}">
+                        <td th:text="${ejemplar.id}"></td>
+                        <td th:text="${ejemplar.nombre}"></td>
+                        <td>
+                            <form action="/SeleccionarEjemplar" method="POST">
+                                <input type="hidden" name="idEjemplar" th:value="${ejemplar.id}">
+                                <button type="submit">Seleccionar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Formulario para añadir mensaje -->
+        <div class="message-form" th:if="${ejemplarSeleccionado != null}">
+            <h3>Escribe el mensaje para el ejemplar: <span th:text="${ejemplarSeleccionado.nombre}"></span></h3>
+            <form action="/CrearMensaje" method="POST">
+                <input type="hidden" name="idEjemplar" th:value="${ejemplarSeleccionado.id}">
+                <textarea name="mensajeTexto" rows="4" cols="50" placeholder="Introduce el mensaje..." required></textarea><br>
+                <button type="submit">Crear Mensaje</button>
+            </form>
+        </div>
+
+        <!-- Mensaje de éxito o error -->
+        <div th:if="${mensajeExito != null}" class="success-message">
+            <p th:text="${mensajeExito}"></p>
+        </div>
+
+        <div th:if="${mensajeError != null}" class="error-message">
+            <p th:text="${mensajeError}"></p>
+        </div>
+    </main>
+
+</body>
+</html>

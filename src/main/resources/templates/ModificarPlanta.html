@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Planta</title>
+    <link rel="stylesheet" href="../CSS/ModificarPlanta.css">
+</head>
+<body>
+    <!-- Header -->
+<header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>Modificar Planta</h1>
+        <a th:href="@{/ViveroAdmin}"><button class="logout-btn">Volver atrás</button></a>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Seleccione una opción para modificar la planta</h2>
+        <form action="/ModificarPlanta" method="GET">
+            <div>
+                <label for="opcion">Selecciona una opción:</label>
+                <select name="opcion" id="opcion">
+                    <option value="1">Modificar nombre común</option>
+                    <option value="2">Modificar nombre científico</option>
+                </select>
+                <button type="submit">Siguiente</button>
+            </div>
+        </form>
+
+        <div th:if="${opcion != null}">
+            <form action="" method="POST"> <!-- Acción vacía para enviar al mismo lugar -->
+                <div class="form-group">
+                    <label for="codigo">Código de la Planta:</label>
+                    <input type="text" id="codigo" name="codigo" required>
+                </div>
+
+                <div class="form-group" th:if="${opcion == 1}">
+                    <label for="nombreComun">Nuevo nombre común:</label>
+                    <input type="text" id="nombreComun" name="nombreComun" required>
+                </div>
+
+                <div class="form-group" th:if="${opcion == 2}">
+                    <label for="nombreCientifico">Nuevo nombre científico:</label>
+                    <input type="text" id="nombreCientifico" name="nombreCientifico" required>
+                </div>
+
+                <button type="submit">Actualizar Planta</button>
+            </form>
+        </div>
+
+        <!-- Mensajes de error o éxito -->
+        <div th:if="${mensaje != null}" style="color: red;">
+            <p th:text="${mensaje}"></p>
+        </div>
+
+        <div th:if="${mensajeExito != null}" style="color: green;">
+            <p th:text="${mensajeExito}"></p>
+        </div>
+    </main>
+</body>
+</html>

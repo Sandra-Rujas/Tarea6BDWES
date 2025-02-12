@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" th:href="@{../CSS/CrearPersona.css}">
+</head>
+<body>
+
+    <!-- Header -->
+       <header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>Crear persona</h1>
+        <a th:href="@{/ViveroAdmin}"><button class="logout-btn">Volver atrás</button></a>
+    
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <form action="/CrearPersona" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <p class="error-message" th:if="${emailError}" th:text="${emailError}"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" required>
+                <p class="error-message" th:if="${usuarioError}" th:text="${usuarioError}"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+                <p class="error-message" th:if="${contraseñaError}" th:text="${contraseñaError}"></p>
+            </div>
+
+            <button type="submit">Registrar</button>
+
+            <div class="success-message" th:if="${mensajeExito}">
+                <p th:text="${mensajeExito}"></p>
+            </div>
+            <div class="error-message" th:if="${mensajeError}">
+                <p th:text="${mensajeError}"></p>
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>

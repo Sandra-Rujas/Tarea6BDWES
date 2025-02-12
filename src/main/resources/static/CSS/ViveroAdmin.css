@@ -1,0 +1,181 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-image: url('../Images/slider02.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+/* Header Styles */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Ajusta el espacio entre el logo y el título */
+}
+
+header .logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    flex: 1; /* Esto hace que el título ocupe todo el espacio disponible en el centro */
+    display: flex;
+    justify-content: center; /* Asegura que el texto esté centrado */
+    align-items: center; /* Asegura que el texto esté centrado verticalmente */
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.logout-btn:hover {
+    background-color: #d3a51a;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centrar las columnas horizontalmente */
+    z-index: 5;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px; /* Puedes ajustar el tamaño máximo */
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con algo de transparencia */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos dentro de cada columna */
+    align-items: center; /* Centra el contenido horizontalmente */
+    text-align: center; /* Alinea el texto al centro */
+    height: 300px; /* Ajusta la altura según sea necesario */
+}
+
+.column h2 {
+    margin-bottom: 15px;
+}
+
+.column button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.column button:hover {
+    background-color: #d3a51a;
+}
+
+.column button a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Dropdown Styles */
+.dropdown-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.dropdown-btn:hover {
+    background-color: #d3a51a;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 100%;
+}
+
+.column:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0;
+}
+
+.dropdown-content button:hover {
+    background-color: #d3a51a;
+}
+
+.dropdown-content button a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}

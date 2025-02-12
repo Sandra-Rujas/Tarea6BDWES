@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplares de Planta</title>
+    <link rel="stylesheet" href="../CSS/FiltrarEjemplar.css">
+</head>
+<body>
+    <!-- Header -->
+<header>
+    <div class="logo">
+        <img src="../Images/logosinfondo.png" alt="Logo">
+    </div>
+    <h1>Ver ejemplares de una planta</h1>
+    <a href="#" th:href="@{${session.userId == 1} ? '/ViveroAdmin' : '/ViveroPersonal'}">
+        <button class="logout-btn">Volver atrás</button>
+    </a>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Formulario para seleccionar el código de la planta -->
+    <form action="/FiltrarEjemplar" method="POST">
+        <label for="codigoPlanta">Código de la Planta:</label>
+        <select id="codigoPlanta" name="codigoPlanta" required>
+            <option value="">Seleccione un código de planta</option>
+            <option th:each="planta : ${plantas}" th:value="${planta.codigo}" th:text="${planta.nombreComun}"></option>
+        </select>
+        <button type="submit">Buscar Ejemplares</button>
+    </form>
+
+    <!-- Mensaje de error o alerta -->
+    <div th:if="${mensaje != null}">
+        <p th:text="${mensaje}"></p>
+    </div>
+
+    <!-- Lista de ejemplares -->
+    <div th:if="${ejemplares != null}">
+        <h2>Ejemplares para la planta con código <span th:text="${codigoPlanta}"></span></h2>
+        <ul>
+            <li th:each="ejemplar : ${ejemplares}">
+                <span th:text="${ejemplar.nombre}"></span> - <span th:text="${ejemplar.id}"></span>
+            </li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>

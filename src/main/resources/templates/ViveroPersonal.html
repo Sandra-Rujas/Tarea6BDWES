@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Personal</title>
+    <link rel="stylesheet" th:href="@{../CSS/ViveroPersonal.css}">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>¡Bienvenidos al Menú del Personal!</h1> 
+        <a th:href="@{/logout}"><button class="logout-btn">Cerrar Sesión</button></a> 
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="menu">
+
+            <!-- Columna 2: Gestión Plantas -->
+            <div class="column">
+                <h2>Gestión Plantas</h2>
+                <button class="dropdown-btn">Ver opciones</button>
+                <div class="dropdown-content">
+                    <button><a th:href="@{/VerPlantas}">Ver Plantas</a></button>
+                </div>
+            </div>
+
+            <!-- Columna 3: Gestión Ejemplares -->
+            <div class="column">
+                <h2>Gestión Ejemplares</h2>
+                <button class="dropdown-btn">Ver opciones</button>
+                <div class="dropdown-content">
+                    <button><a th:href="@{/CrearEjemplar}">Crear Ejemplar</a></button>
+                    <button><a th:href="@{/FiltrarEjemplar}">Filtrar Ejemplar por Tipo de Planta</a></button>
+                    <button><a th:href="@{/VerMensajesEjemplar}">Ver Mensajes de un Ejemplar</a></button>
+                </div>
+            </div>
+
+            <!-- Columna 4: Gestión Mensajes -->
+            <div class="column">
+                <h2>Gestión Mensajes</h2>
+                <button class="dropdown-btn">Ver opciones</button>
+                <div class="dropdown-content">
+                    <button><a th:href="@{/CrearMensaje}">Añadir Mensaje</a></button>
+                    <button><a th:href="@{/VerMensajes}">Ver Mensajes</a></button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

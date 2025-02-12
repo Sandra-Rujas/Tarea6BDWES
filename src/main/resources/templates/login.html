@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" th:href="@{/CSS/login.css}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>¡Introduce tus credenciales!</h1>
+        <a th:href="@{/}"><button class="logout-btn">Volver atrás</button></a>
+    </header>
+
+    <div class="slider">
+        <img th:src="@{../Images/slider01.jpg}" alt="Imagen de fondo">
+        <div class="overlay">
+            <div class="login-box">
+                <h2>Bienvenido</h2>
+                <form th:action="@{/login}" method="post">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                    
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+                
+                <!-- Mensaje de error si el login falla -->
+                <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

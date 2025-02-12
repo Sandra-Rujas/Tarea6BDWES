@@ -1,0 +1,161 @@
+/* Reseteo de algunos estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+   
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    margin: 0;
+    align-content: center;
+    font-size: 24px;
+}
+
+.logout-btn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.logout-btn:hover {
+    background-color: #d3a51a;
+}
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 600px;
+	margin: 200px auto 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtítulo */
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Estilo del formulario */
+form {
+    margin-top: 20px;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+select:focus, input:focus {
+    border-color: black;
+    outline: none;
+}
+
+/* Botón de submit */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d3a51a;
+}
+
+/* Estilo para los mensajes de error o éxito */
+div[style="color: red;"] p {
+    font-size: 1rem;
+    color: red;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+div[style="color: green;"] p {
+    font-size: 1rem;
+    color: green;
+    background-color: #d4edda;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Espaciado adicional para el formulario */
+form {
+    margin-top: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    main {
+        padding: 15px;
+        margin: 0 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+}

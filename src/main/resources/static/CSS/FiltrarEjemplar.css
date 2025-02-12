@@ -1,0 +1,185 @@
+/* General body and layout styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 100vh; /* Altura completa de la pantalla */
+    flex-direction: column; /* Asegura que el contenido se distribuya de arriba hacia abajo */
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 15px 20px;
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: 70px; /* Define una altura fija */
+}
+
+/* Logo dentro del header */
+header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Botón de logout dentro del header */
+.logout-btn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: white;
+}
+
+.logout-btn:hover {
+    background-color: #d3a51a;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    margin-top: 90px; /* Espacio suficiente para que el header no lo tape */
+    background-color: white;
+    width: 80%; /* Limita el ancho a un 80% */
+    max-width: 800px; /* Define un ancho máximo */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle un efecto elevado */
+}
+
+/* Estilos de los encabezados */
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+h2 span {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Estilos para las listas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 18px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+li span {
+    color: #333;
+}
+
+/* Estilos para los formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilos para el botón de submit */
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #d3a51a;
+}
+
+/* Mensajes de alerta o error */
+p {
+    font-size: 18px;
+    color: #d9534f;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        justify-content: flex-start; /* Hace que el contenido esté arriba en pantallas pequeñas */
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+        width: 90%; /* Ajusta el tamaño del main en pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    select {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}

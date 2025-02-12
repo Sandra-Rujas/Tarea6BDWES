@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Planta</title>
+    <link rel="stylesheet" href="../CSS/CrearPlanta.css">
+</head>
+<body>
+    <!-- Header -->
+<header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>Crear Planta</h1>
+        <a th:href="@{/ViveroAdmin}"><button class="logout-btn">Volver atrás</button></a>
+    </header>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <form action="/CrearPlanta" method="POST">
+            <div class="form-group">
+                <label for="codigo">Código de la Planta:</label>
+                <input type="text" id="codigo" name="codigo" required>
+                <span id="codigo-error" style="color: red; display: none;">El formato del código no es correcto o ya existe.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="nombreComun">Nombre Común:</label>
+                <input type="text" id="nombreComun" name="nombreComun" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nombreCientifico">Nombre Científico:</label>
+                <input type="text" id="nombreCientifico" name="nombreCientifico" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Crear Planta</button>
+            </div>
+
+            <div id="mensaje-error" style="color: red; display: none;">
+                <p>No se pudo registrar la planta. Verifique los datos ingresados.</p>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

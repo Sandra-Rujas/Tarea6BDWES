@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivero</title>
+    <link rel="stylesheet" th:href="@{../CSS/VerPlantas.css}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+        </div>
+        <h1>¡Listado de Plantas!</h1>
+        <a th:href="@{/}"><button class="logout-btn">Volver atrás</button></a>
+    </header>    
+
+    <div class="plant-list">
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre Común</th>
+                <th>Nombre Científico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="planta : ${plantas}">
+                <td th:text="${planta.codigo}">Código</td>
+                <td th:text="${planta.nombreComun}">Nombre Común</td>
+                <td th:text="${planta.nombreCientifico}">Nombre Científico</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

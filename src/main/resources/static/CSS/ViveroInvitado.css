@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Altura del header */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Esto ajusta el espacio entre el logo y el título */
+}
+
+header .logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    flex: 1; /* Esto hace que el título ocupe todo el espacio disponible en el centro */
+    display: flex;
+    justify-content: center; /* Asegura que el texto esté centrado */
+    align-items: center; /* Asegura que el texto esté centrado verticalmente */
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    animation: slide 20s infinite; /* Duración total de 20 segundos */
+}
+
+@keyframes slide {
+    0%, 30% {
+        opacity: 1;
+    }
+    35%, 95% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.slider img:nth-child(1) {
+    animation-delay: 0s; /* Primera imagen */
+}
+
+.slider img:nth-child(2) {
+    animation-delay: 6.67s; /* Segunda imagen */
+}
+
+.slider img:nth-child(3) {
+    animation-delay: 13.33s; /* Tercera imagen */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 5;
+}
+
+.main-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.main-content .button-container {
+    display: flex;
+    gap: 20px;
+}
+
+.main-content .button {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.main-content .button:hover {
+    background-color: #FF8C00;
+}
