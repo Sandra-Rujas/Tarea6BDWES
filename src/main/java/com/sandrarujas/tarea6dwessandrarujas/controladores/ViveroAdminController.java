@@ -24,17 +24,40 @@ public class ViveroAdminController {
 	@Autowired
 	Controlador controlador;
 
+	
+	/**
+     * Muestra el menú principal de administración.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista a mostrar.
+     */
+	
 	@GetMapping("/ViveroAdmin")
 	public String mostrarMenuAdmin(Model model) {
 		return "ViveroAdmin";
 	}
 
 	// GESTIÓN PERSONAS
+	/**
+     * Muestra el formulario para crear una nueva persona.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista para crear una persona.
+     */
+	
     @GetMapping("/CrearPersona")
     public String mostrarFormularioRegistro(Model model) {
         return "CrearPersona";
     }
 
+    /**
+     * Registra una nueva persona en el sistema.
+     * @param nombre El nombre de la persona.
+     * @param email El correo electrónico de la persona.
+     * @param usuario El nombre de usuario de la persona.
+     * @param contraseña La contraseña de la persona.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista después de registrar la persona.
+     */
+    
     @PostMapping("/CrearPersona")
     public String registrarPersona(@RequestParam String nombre,
                                    @RequestParam String email,
@@ -42,13 +65,11 @@ public class ViveroAdminController {
                                    @RequestParam String contraseña,
                                    Model model) {
         try {
-            // Verifica si el email ya está en uso
             if (controlador.getServiciosPersona().emailExistente(email)) {
                 model.addAttribute("mensajeError", "El email ya está registrado.");
                 return "CrearPersona";
             }
 
-            // Verifica si el usuario ya existe o es inválido
             if (controlador.getServiciosCredencial().usuarioExistente(usuario) || usuario.length() < 3) {
                 model.addAttribute("mensajeError", "Usuario registrado o no válido.");
                 return "CrearPersona";
@@ -61,13 +82,11 @@ public class ViveroAdminController {
             
         
 
-            // Verifica la contraseña
             if (!controlador.getServiciosCredencial().validarPassword(contraseña)) {
                 model.addAttribute("mensajeError", "La contraseña debe tener entre 6 y 20 caracteres.");
                 return "CrearPersona";
             }
 
-            // Crear nueva persona y credencial
             Persona persona = new Persona();
             persona.setNombre(nombre);
             persona.setEmail(email);
@@ -78,13 +97,11 @@ public class ViveroAdminController {
             credencial.setPersona(persona);
             persona.setCredencial(credencial);
 
-            // Validación final
             if (!controlador.getServiciosPersona().validarPersona(persona)) {
                 model.addAttribute("mensajeError", "Los datos no son válidos.");
                 return "CrearPersona";
             }
 
-            // Guardar en la base de datos
             controlador.getServiciosPersona().insertar(persona);
             model.addAttribute("mensajeExito", "Usuario registrado correctamente.");
 
@@ -96,14 +113,18 @@ public class ViveroAdminController {
     }
 	
 	
-
+    /**
+     * Muestra todas las personas registradas.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista con las personas.
+     */
+    
     @GetMapping("/VerPersonas")
     public String mostrarPersonas(Model model) {
-        // Obtener la lista de todas las personas
 		ArrayList<Persona> personas = (ArrayList<Persona>) controlador.getServiciosPersona().totalPersonas();
 
         if (personas == null || personas.isEmpty()) {
-            model.addAttribute("personas", new ArrayList<>()); // Pasar una lista vacía
+            model.addAttribute("personas", new ArrayList<>()); 
         } else {
             model.addAttribute("personas", personas);
         }
@@ -112,63 +133,77 @@ public class ViveroAdminController {
     }
 
 	// GESTIÓN PLANTAS
+    
+
+    /**
+     * Muestra el formulario para crear una nueva planta.
+     * @return El nombre de la vista para crear una planta.
+     */
+    
 	@GetMapping("/CrearPlanta")
 	public String crearPlanta() {
 		return "CrearPlanta";
 	}
 
+	/**
+     * Registra una nueva planta en el sistema.
+     * @param codigo El código de la planta.
+     * @param nombreComun El nombre común de la planta.
+     * @param nombreCientifico El nombre científico de la planta.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista después de registrar la planta.
+     */
+	
 	@PostMapping("/CrearPlanta")
 	public String crearPlanta(@RequestParam("codigo") String codigo, @RequestParam("nombreComun") String nombreComun,
 			@RequestParam("nombreCientifico") String nombreCientifico, Model model) {
 		try {
-			// Limpiamos posibles espacios antes y después de la entrada
 			codigo = codigo.trim().toUpperCase();
 			nombreComun = nombreComun.trim();
 			nombreCientifico = nombreCientifico.trim();
 
-			// Validamos el código de la planta
 			boolean correcto = controlador.getServiciosPlanta().validarCodigoPlanta(codigo);
 			boolean existe = controlador.getServiciosPlanta().codigoExistente(codigo);
 
 			if (!correcto) {
-				// Si el formato del código es incorrecto
 				model.addAttribute("mensajeError", "El formato del código no es correcto.");
-				return "CrearPlantas"; // Volver a la vista de registro de planta
+				return "CrearPlantas"; 
 			}
 
 			if (existe) {
-				// Si el código ya existe
 				model.addAttribute("mensajeError", "Código de planta ya existente.");
-				return "CrearPlanta"; // Volver a la vista de registro de planta
+				return "CrearPlanta"; 
 			}
 
-			// Creamos la nueva planta
 			Planta nuevaPlanta = new Planta();
 			nuevaPlanta.setCodigo(codigo);
 			nuevaPlanta.setNombreComun(nombreComun);
 			nuevaPlanta.setNombreCientifico(nombreCientifico);
 
-			// Validamos la planta
 			boolean datosPlanta = controlador.getServiciosPlanta().validarPlanta(nuevaPlanta);
 			if (!datosPlanta) {
 				model.addAttribute("mensajeError", "Los datos que has introducido no son correctos.");
-				return "CrearPlantas"; // Volver a la vista de registro de planta
+				return "CrearPlantas"; 
 			}
 
-			// Si todo es correcto, registrar la planta (por ejemplo, en la base de datos)
 			controlador.getServiciosPlanta().insertar(nuevaPlanta);
 
-			// Redirigimos a la página de éxito o a alguna otra página
 			model.addAttribute("mensajeExito", "Planta registrada exitosamente.");
-			return "ViveroAdmin"; // Puede ser redirigido a cualquier otra vista de administración
+			return "ViveroAdmin"; 
 
 		} catch (Exception e) {
 			model.addAttribute("mensajeError", "Error al registrar la planta: " + e.getMessage());
-			return "CrearPlantas"; // Volver a la vista de registro de planta
+			return "CrearPlantas"; 
 		}
 	}
 
-	// Mostrar la página con la opción seleccionada
+	/**
+     * Muestra el formulario para modificar una planta.
+     * @param model El modelo para la vista.
+     * @param opcion La opción seleccionada para modificar.
+     * @return El nombre de la vista para modificar la planta.
+     */
+	
 	@GetMapping("/ModificarPlanta")
 	public String mostrarMenuModificarPlanta(Model model,
 			@RequestParam(name = "opcion", required = false) Integer opcion) {
@@ -178,28 +213,24 @@ public class ViveroAdminController {
 		return "ModificarPlanta";
 	}
 
-	// Procesar la actualización de la planta (nombre común o nombre científico)
 	@PostMapping("/ModificarPlanta")
 	public String actualizarPlanta(@RequestParam("codigo") String codigo,
 			@RequestParam(name = "nombreComun", required = false) String nombreComun,
 			@RequestParam(name = "nombreCientifico", required = false) String nombreCientifico,
 			@RequestParam("opcion") Integer opcion, Model model) {
 		try {
-			// Validación del código de planta
 			boolean valido = controlador.getServiciosPlanta().validarCodigoPlanta(codigo);
 			if (!valido) {
 				model.addAttribute("mensaje", "El código de la planta no es válido.");
 				return "ModificarPlanta";
 			}
 
-			// Verificar si la planta existe
 			boolean existe = controlador.getServiciosPlanta().codigoExistente(codigo);
 			if (!existe) {
 				model.addAttribute("mensaje", "El código de la planta no existe en la base de datos.");
 				return "ModificarPlanta";
 			}
 
-			// Realizar la actualización según la opción seleccionada
 			boolean actualizado = false;
 			if (opcion == 1 && nombreComun != null) {
 				actualizado = controlador.getServiciosPlanta().actualizarNombreComun(codigo, nombreComun);
@@ -222,11 +253,16 @@ public class ViveroAdminController {
 			model.addAttribute("mensaje", "Error al intentar actualizar la planta: " + e.getMessage());
 		}
 
-		return "ModificarPlanta"; // Regresar a la misma página
+		return "ModificarPlanta"; 
 	}
 
 	// GESTIÓN MENSAJES
-	// Método GET para mostrar la lista de ejemplares y el formulario
+	/**
+     * Muestra el formulario para crear un nuevo mensaje.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista para crear un mensaje.
+     */
+	
 	@GetMapping("/CrearMensaje")
 	public String mostrarFormularioCrearMensaje(Model model) {
 		List<Ejemplar> ejemplares = (List<Ejemplar>) controlador.getServiciosEjemplar().verEjemplares();
@@ -240,7 +276,13 @@ public class ViveroAdminController {
 		return "CrearMensaje";
 	}
 
-	// Método POST para seleccionar el ejemplar y redirigir al formulario de mensaje
+	 /**
+     * Permite seleccionar un ejemplar para crear un mensaje.
+     * @param idEjemplar El ID del ejemplar a seleccionar.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista con el ejemplar seleccionado.
+     */
+	
 	@PostMapping("/SeleccionarEjemplar")
 	public String seleccionarEjemplar(@RequestParam Long idEjemplar, Model model) {
 		Ejemplar ejemplar = controlador.getServiciosEjemplar().buscarPorID(idEjemplar);
@@ -251,10 +293,18 @@ public class ViveroAdminController {
 		}
 
 		model.addAttribute("ejemplarSeleccionado", ejemplar);
-		return "CrearMensaje"; // Carga nuevamente la vista pero con el ejemplar seleccionado
+		return "CrearMensaje"; 
 	}
+	
 
-	// Método POST para crear el mensaje con el ejemplar seleccionado
+	/**
+     * Crea un nuevo mensaje asociado a un ejemplar.
+     * @param idEjemplar El ID del ejemplar al que se asigna el mensaje.
+     * @param mensajeTexto El texto del mensaje.
+     * @param model El modelo para la vista.
+     * @return El nombre de la vista después de crear el mensaje.
+     */
+	
 	@PostMapping("/CrearMensaje")
 	public String crearMensaje(@RequestParam Long idEjemplar, @RequestParam String mensajeTexto, Model model) {
 		boolean exito = false;

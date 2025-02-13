@@ -19,44 +19,61 @@ public class ViveroInvitadoController {
 
 	@Autowired
 	Controlador controlador;
+	
 
-	@GetMapping({ "/", "/welcome" })
+	/**
+     * Muestra la página de bienvenida del vivero invitado.
+     * @param nombre El nombre a mostrar, por defecto es "Mundo".
+     * @param model El objeto Model que se pasa a la vista.
+     * @return El nombre de la vista a mostrar ("ViveroInvitado").
+     */
+	
+	@GetMapping({ "/" })
 	public String welcome(@RequestParam(name = "nombre", required = false, defaultValue = "Mundo") String nombre,
 			Model model) {
-
-		model.addAttribute("nombre", nombre);
 		return "ViveroInvitado";
 	}
 
-	   // Muestra el formulario de login
+	/**
+     * Muestra el formulario de login.
+     * @param error El mensaje de error, si existe.
+     * @param model El objeto Model que se pasa a la vista.
+     * @return El nombre de la vista de login.
+     */
+	
     @GetMapping("/login")
     public String loginForm(@RequestParam(name = "error", required = false) String error, Model model) {
         
         return "login";
     }
 
-    // Procesa el login
+    
+    /**
+     * Procesa el formulario de login y autentica al usuario.
+     * @param usuario El nombre de usuario ingresado.
+     * @param password La contraseña ingresada.
+     * @param model El objeto Model para pasar datos a la vista.
+     * @param session La sesión HTTP donde se almacena la información del usuario autenticado.
+     * @return Redirige a la vista de administrador o personal según el ID del usuario.
+     */
+    
     @PostMapping("/login")
     public String login(@RequestParam("username") String usuario, @RequestParam("password") String password,
             Model model, HttpSession session) {
         try {
-            // Autenticamos el usuario (puedes agregar aquí tu lógica de autenticación)
             boolean autenticar = controlador.getServiciosCredencial().autenticar(usuario, password);
 
             
-                // Guardamos el nombre de usuario en la sesión
                 session.setAttribute("usuarioAutenticado", usuario);
                 
-                // Aquí obtenemos el userId directamente (lo puedes obtener de tu base de datos)
-                Integer userId = obtenerUserIdPorUsername(usuario); // Método que obtiene el userId por username
+                Integer userId = controlador.getServiciosCredencial().obtenerUserIdPorUsername(usuario); 
 
-                session.setAttribute("userId", userId); // Guardamos el userId en la sesión
+                session.setAttribute("userId", userId); 
 
-                // Redirigir al admin si el userId es 1, de lo contrario al personal
                 if (userId != null && userId == 1) {
-                    return "redirect:/ViveroAdmin";  // Admin
+                    return "redirect:/ViveroAdmin";  
                 } else {
-                    return "redirect:/ViveroPersonal";  // Personal
+                    return "redirect:/ViveroPersonal";  
                 }
             
         } catch (Exception e) {
@@ -65,38 +82,40 @@ public class ViveroInvitadoController {
         }
     }
 
-	private Integer obtenerUserIdPorUsername(String username) {
-		// Lógica para obtener el userId del usuario
-		if (username.equals("admin")) {
-			return 1; // Administrador
-		} else {
-			return 2; // Usuario normal
-		}
-	}
-
+    /**
+     * Muestra todas las plantas disponibles en el vivero.
+     * @param model El objeto Model que se pasa a la vista.
+     * @return El nombre de la vista que muestra la lista de plantas.
+     */
+    
 	@GetMapping("/VerPlantas")
 	public String mostrarPlantas(Model model) {
 		
 		try {
-			// Obtenemos la lista de plantas desde el servicio
-			List<Planta> plantas = controlador.getServiciosPlanta().verPlantas(); // Devuelve una lista, no es necesario
-																					// hacer el cast
+			List<Planta> plantas = controlador.getServiciosPlanta().verPlantas(); 									
 
 			if (plantas == null || plantas.isEmpty()) {
-				// Si no hay plantas, pasamos un mensaje al modelo
 				model.addAttribute("mensaje", "No hay plantas disponibles en la base de datos.");
 			} else {
-				// Si hay plantas, las pasamos al modelo
 				model.addAttribute("plantas", plantas);
 			}
 
-			// Devolvemos la vista para mostrar las plantas
 			return "VerPlantas";
 		} catch (Exception e) {
-			// Capturamos la excepción y pasamos un mensaje de error al modelo
 			model.addAttribute("mensaje", "Error al cargar las plantas: " + e.getMessage());
-			return "VerPlantas"; // En caso de error, seguimos mostrando la vista
+			return "VerPlantas"; 
 		}
+	}
+	
+	
+	/** 
+	 * Cierra la aplicación de forma inmediata.
+	 * @return No devuelve un valor útil, ya que la aplicación se cierra antes de ejecutar el retorno.
+	 */
+	@GetMapping("/salir")
+	public String cerrarAplicacion() {
+	    System.exit(0); 
+	    return "redirect:/"; 
 	}
 
 }
