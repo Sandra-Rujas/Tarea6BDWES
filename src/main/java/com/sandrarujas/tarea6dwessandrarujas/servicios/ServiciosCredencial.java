@@ -66,4 +66,12 @@ public class ServiciosCredencial {
     }
     
     
+    public Integer obtenerUserIdPorUsername(String username) {
+		if (username.equals("admin")) {
+			return 1; 
+		} else {
+			return 2; 
+		}
+	}
+    
 }
