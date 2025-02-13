@@ -12,26 +12,28 @@ public class Tarea6dwessandrarujasApplication {
     public static void main(String[] args) {
         SpringApplication.run(Tarea6dwessandrarujasApplication.class, args);
         
-        // Intentar abrir el navegador en Windows
         openBrowser("http://localhost:8080");
     }
 
+    
+    /**
+     * Abre la URL especificada en el navegador predeterminado del sistema operativo.
+     * @param url La URL a abrir.
+     */
+    
     private static void openBrowser(String url) {
         String os = System.getProperty("os.name").toLowerCase();
 
         try {
             if (os.contains("win")) {
-                // Comando para abrir el navegador en Windows
                 Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
             } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
-                // Comando para abrir el navegador en Linux/Mac
                 String[] browsers = { "google-chrome", "firefox", "safari" };
                 for (String browser : browsers) {
                     try {
                         Runtime.getRuntime().exec(new String[] { browser, url });
                         break;
                     } catch (IOException e) {
-                        // Si el navegador no se encuentra, intenta con el siguiente
                     }
                 }
             }
