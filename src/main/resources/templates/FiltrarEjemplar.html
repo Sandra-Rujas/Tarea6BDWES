@@ -27,7 +27,7 @@
 				id="codigoPlanta" name="codigoPlanta" required>
 				<option value="">Seleccione un código de planta</option>
 				<option th:each="planta : ${plantas}" th:value="${planta.codigo}"
-					th:text="${planta.nombreComun}"></option>
+					th:text="${planta.codigo}"></option>
 			</select>
 			<button type="submit">Buscar Ejemplares</button>
 		</form>

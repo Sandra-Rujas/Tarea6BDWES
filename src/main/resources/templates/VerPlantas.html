@@ -14,7 +14,7 @@
 			<img th:src="@{../Images/logosinfondo.png}" alt="Logo">
 		</div>
 		<h1>¡Listado de Plantas!</h1>
-		<a th:href="@{/}"><button class="logout-btn">Volver atrás</button></a>
+				<a th:href="@{${session.userId == null ? '/' : (session.userId == 1 ? '/ViveroAdmin' : '/ViveroPersonal')}}"><button class="logout-btn">Volver atrás</button></a>
 	</header>
 	
 	<!-- Contenido principal. Listado de plantas -->

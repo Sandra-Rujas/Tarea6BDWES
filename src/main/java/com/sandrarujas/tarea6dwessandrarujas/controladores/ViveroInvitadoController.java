@@ -58,24 +58,33 @@ public class ViveroInvitadoController {
      */
     
     @PostMapping("/login")
-    public String login(@RequestParam("username") String usuario, @RequestParam("password") String password,
-            Model model, HttpSession session) {
+    public String login(@RequestParam("username") String usuario, 
+                        @RequestParam("password") String password,
+                        Model model, 
+                        HttpSession session) {
         try {
             boolean autenticar = controlador.getServiciosCredencial().autenticar(usuario, password);
 
-            
-                session.setAttribute("usuarioAutenticado", usuario);
-                
-                Integer userId = controlador.getServiciosCredencial().obtenerUserIdPorUsername(usuario); 
+            if (!autenticar) {
+                model.addAttribute("errorMessage", "Usuario o contraseña incorrectos.");
+                return "login";
+            }
 
-                session.setAttribute("userId", userId); 
+            Integer userId = controlador.getServiciosCredencial().obtenerUserIdPorUsername(usuario);
 
-                if (userId != null && userId == 1) {
-                    return "redirect:/ViveroAdmin";  
-                } else {
-                    return "redirect:/ViveroPersonal";  
-                }
-            
+            if (userId == null) {
+                model.addAttribute("errorMessage", "El usuario no existe.");
+                return "login";
+            }
+
+            session.setAttribute("usuarioAutenticado", usuario);
+            session.setAttribute("userId", userId);
+
+            if (userId == 1) {
+                return "redirect:/ViveroAdmin";  
+            } else {
+                return "redirect:/ViveroPersonal";  
+            }
         } catch (Exception e) {
             model.addAttribute("errorMessage", "No se ha podido iniciar sesión: " + e.getMessage());
             return "login";

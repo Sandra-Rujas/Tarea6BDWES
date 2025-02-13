@@ -13,6 +13,12 @@ public interface CredencialRepository extends JpaRepository<Credencial, Long> {
 
 	/*Método que nos permite comprobar si el usuario ya existe*/
 	boolean existsByUsuario(String usuario);
+	
+	//Metodo para buscar por usuario
+	Credencial findByUsuario(String username);
+	
+    
+
 
 	/*Método que permite comprobar a través de consulta si un usuario ya existe dentro de la bbdd*/
 	@Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM Credencial c WHERE c.usuario = :usuario AND c.password = :password")

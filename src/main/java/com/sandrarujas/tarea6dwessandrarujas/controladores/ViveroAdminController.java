@@ -18,6 +18,8 @@ import com.sandrarujas.tarea6dwessandrarujas.modelo.Persona;
 import com.sandrarujas.tarea6dwessandrarujas.modelo.Planta;
 import com.sandrarujas.tarea6dwessandrarujas.servicios.Controlador;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ViveroAdminController {
 
@@ -264,15 +266,19 @@ public class ViveroAdminController {
      */
 	
 	@GetMapping("/CrearMensaje")
-	public String mostrarFormularioCrearMensaje(Model model) {
+	public String mostrarFormularioCrearMensaje(Model model, HttpSession session ) {
 		List<Ejemplar> ejemplares = (List<Ejemplar>) controlador.getServiciosEjemplar().verEjemplares();
+	    String usuario = (String) session.getAttribute("usuarioAutenticado");
+	    Integer userId =controlador.getServiciosCredencial().obtenerUserIdPorUsername(usuario);
+	    session.setAttribute("userId", userId);  
+	    System.out.println("Usuario autenticado en sesión: " + usuario); 
 
 		if (ejemplares == null || ejemplares.isEmpty()) {
 			model.addAttribute("mensajeError", "No hay ejemplares disponibles.");
 		} else {
 			model.addAttribute("ejemplares", ejemplares);
 		}
-
+		
 		return "CrearMensaje";
 	}
 
@@ -306,16 +312,15 @@ public class ViveroAdminController {
      */
 	
 	@PostMapping("/CrearMensaje")
-	public String crearMensaje(@RequestParam Long idEjemplar, @RequestParam String mensajeTexto, Model model) {
+	public String crearMensaje(@RequestParam Long idEjemplar, @RequestParam String mensajeTexto, Model model, HttpSession session) {
 		boolean exito = false;
 
 		if (mensajeTexto != null && !mensajeTexto.trim().isEmpty()) {
 			try {
 				Ejemplar ejemplar = controlador.getServiciosEjemplar().buscarPorID(idEjemplar);
 				if (ejemplar != null) {
-					String usuarioAutenticado = controlador.obtenerUsuarioConectado();
+	                String usuarioAutenticado = (String) session.getAttribute("usuarioAutenticado");
 					Persona p = controlador.getServiciosPersona().buscarPorNombre(usuarioAutenticado);
-
 					if (p == null) {
 						model.addAttribute("mensajeError", "No se ha encontrado la persona autenticada.");
 					} else {

@@ -65,7 +65,11 @@ public class ServiciosCredencial {
         return password.matches("^[A-Za-z0-9]{6,20}$");
     }
     
-    
+    /*
+     * Método para encontrar el Id del User por su nombre de Usuario.
+     * @param username Nombre usuario.
+     * @return 1 si el id del admin, 2 todos los demás.
+     */
     public Integer obtenerUserIdPorUsername(String username) {
 		if (username.equals("admin")) {
 			return 1; 
