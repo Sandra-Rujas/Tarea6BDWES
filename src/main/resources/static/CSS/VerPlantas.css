@@ -9,6 +9,9 @@ body {
     background-image: url('../Images/slider02.jpg'); 
     color: white;
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
 }
 
 header {
@@ -114,6 +117,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 30px;
+    background-color:white;
 }
 
 th, td {

@@ -1,11 +1,13 @@
 html, body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    text-align: center;
     width: 100%;
-    overflow-x: hidden; 
-    box-sizing: border-box;
+    background-image: url('../Images/slider01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
 }
 
 header {
@@ -21,6 +23,7 @@ header {
     width: 100%;
     z-index: 100;
     height: 70px;
+    box-sizing: border-box;
 }
 
 header .logo img {
@@ -29,30 +32,34 @@ header .logo img {
     margin-right: 15px;
 }
 
+/* Título centrado */
 header h1 {
-    flex-grow: 1; 
+    flex-grow: 1;
     font-size: 24px;
     text-align: center;
     margin: 0;
 }
 
-header a button {
-    background-color: black; 
+.logout-btn {
+    background-color: #000000;
     color: white;
-    padding: 8px 15px;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+    border-color: white;
 }
 
-header a button:hover {
+.logout-btn:hover {
     background-color: #d3a51a;
 }
 
+
 main {
-    margin-top: 90px; 
+	background-color:white;
+    margin-top: 150px; 
     padding: 20px;
-    background-color: white;
     max-width: 600px;
     width: 90%;
     margin-left: auto;
