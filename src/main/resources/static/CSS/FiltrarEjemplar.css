@@ -1,14 +1,13 @@
-/* General body and layout styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    height: 100vh; /* Altura completa de la pantalla */
-    flex-direction: column; /* Asegura que el contenido se distribuya de arriba hacia abajo */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    flex-direction: column; 
 }
 
 /* Header */
@@ -19,15 +18,14 @@ header {
     background-color: black;
     color: white;
     padding: 15px 20px;
-    position: fixed; /* Fija el header en la parte superior */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-    height: 70px; /* Define una altura fija */
+    height: 70px; 
 }
 
-/* Logo dentro del header */
 header .logo img {
     height: 50px;
     margin-right: 10px;
@@ -38,7 +36,6 @@ header h1 {
     font-size: 24px;
 }
 
-/* Botón de logout dentro del header */
 .logout-btn {
     background-color: #000000;
     color: white;
@@ -54,18 +51,16 @@ header h1 {
     background-color: #d3a51a;
 }
 
-/* Main content styling */
 main {
     padding: 20px;
-    margin-top: 90px; /* Espacio suficiente para que el header no lo tape */
+    margin-top: 90px; 
     background-color: white;
-    width: 80%; /* Limita el ancho a un 80% */
-    max-width: 800px; /* Define un ancho máximo */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle un efecto elevado */
+    width: 80%; 
+    max-width: 800px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Estilos de los encabezados */
 h2 {
     font-size: 24px;
     color: #333;
@@ -76,7 +71,6 @@ h2 span {
     color: #4CAF50;
 }
 
-/* Estilos para las listas */
 ul {
     list-style-type: none;
     padding: 0;
@@ -94,7 +88,6 @@ li span {
     color: #333;
 }
 
-/* Estilos para los formularios */
 form {
     display: flex;
     flex-direction: column;
@@ -115,7 +108,6 @@ select {
     border-radius: 4px;
 }
 
-/* Estilos para el botón de submit */
 button {
     background-color: black;
     color: white;
@@ -130,7 +122,6 @@ button:hover {
     background-color: #d3a51a;
 }
 
-/* Mensajes de alerta o error */
 p {
     font-size: 18px;
     color: #d9534f;
@@ -140,10 +131,9 @@ p {
     margin-top: 20px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     body {
-        justify-content: flex-start; /* Hace que el contenido esté arriba en pantallas pequeñas */
+        justify-content: flex-start; 
     }
 
     header {
@@ -157,7 +147,7 @@ p {
     main {
         margin: 10px;
         padding: 15px;
-        width: 90%; /* Ajusta el tamaño del main en pantallas pequeñas */
+        width: 90%; 
     }
 
     h2 {

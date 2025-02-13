@@ -2,14 +2,13 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
-    height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
 }
 
-/* Encabezado */
 header {
     display: flex;
     align-items: center;
@@ -37,10 +36,9 @@ header h1 {
     margin: 0;
     font-size: 24px;
     text-align: center;
-    flex-grow: 1;  /* Asegura que el título ocupe el espacio disponible */
+    flex-grow: 1;  
 }
 
-/* Botón de Volver atrás */
 .logout-btn {
     background-color: #000000;
     color: white;
@@ -56,7 +54,6 @@ header h1 {
     background-color: #d3a51a;
 }
 
-/* Contenedor principal */
 .container {
 	margin-top: 50px; 
     background: white;
@@ -69,13 +66,11 @@ header h1 {
     text-align: center;
 }
 
-/* Grupo de formularios */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
 
-/* Etiquetas */
 label {
     display: block;
     font-weight: bold;
@@ -83,7 +78,6 @@ label {
     margin-bottom: 5px;
 }
 
-/* Campos de entrada */
 input {
     width: 100%;
     padding: 10px;
@@ -93,7 +87,6 @@ input {
     font-size: 16px;
 }
 
-/* Botón de acción */
 button {
     background-color: #000;
     color: white;
@@ -105,12 +98,10 @@ button {
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Efecto hover en botón */
 button:hover {
     background-color: #333;
 }
 
-/* Mensajes de éxito y error */
 .success-message, .error-message {
     text-align: center;
     font-size: 1.2em;
@@ -123,14 +114,12 @@ button:hover {
     margin: 20px auto;
 }
 
-/* Mensaje de éxito */
 .success-message {
     color: #155724;
     background-color: #d4edda;
     border: 1px solid #c3e6cb;
 }
 
-/* Mensaje de error */
 .error-message {
     color: #721c24;
     background-color: #f8d7da;

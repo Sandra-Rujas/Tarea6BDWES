@@ -1,7 +1,6 @@
-/* CrearMensaje.css */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e9f7ef; /* Fondo suave, color pastel verde */
+    background-color: #e9f7ef; 
     margin: 0;
     padding: 0;
 }
@@ -57,7 +56,7 @@ header h1 {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-image: url('path_to_leaf_image.png'); /* Fondo sutil de hojas */
+    background-image: url('path_to_leaf_image.png'); 
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: top center;
@@ -67,18 +66,18 @@ header h1 {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: #f1f9f1; /* Fondo suave de hojas */
+    background-color: #f1f9f1; 
 }
 
 .ejemplares-list th, .ejemplares-list td {
     padding: 12px;
-    border: 1px solid #b3d9b3; /* Borde verde suave */
+    border: 1px solid #b3d9b3; 
     text-align: center;
-    background-color: #dff7e2; /* Color verde pálido */
+    background-color: #dff7e2; 
 }
 
 button {
-    background-color: #66bb6a; /* Verde natural */
+    background-color: #66bb6a; 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -88,7 +87,7 @@ button {
 }
 
 button:hover {
-    background-color: #4caf50; /* Verde más intenso al pasar el mouse */
+    background-color: #4caf50; 
 }
 
 textarea {
@@ -97,12 +96,12 @@ textarea {
     border-radius: 8px;
     border: 1px solid #b3d9b3;
     font-size: 16px;
-    background-color: #eaf9e2; /* Color suave y relajante */
+    background-color: #eaf9e2; 
     transition: background-color 0.3s ease;
 }
 
 textarea:focus {
-    background-color: #c8e6c9; /* Cambio a verde más intenso cuando se selecciona */
+    background-color: #c8e6c9; 
     outline: none;
 }
 

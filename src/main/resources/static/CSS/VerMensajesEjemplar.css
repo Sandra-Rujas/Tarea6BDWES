@@ -1,15 +1,13 @@
-/* Evita desbordamientos y asegura el tamaño correcto */
 html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     width: 100%;
-    overflow-x: hidden; /* Elimina el scroll horizontal */
+    overflow-x: hidden; 
     box-sizing: border-box;
 }
 
-/* Header fijo en la parte superior */
 header {
     display: flex;
     align-items: center;
@@ -25,24 +23,21 @@ header {
     height: 70px;
 }
 
-/* Logo del header */
 header .logo img {
-    width: 50px; /* Tamaño ajustado del logo */
+    width: 50px; 
     height: auto;
     margin-right: 15px;
 }
 
-/* Estilos del título dentro del header */
 header h1 {
-    flex-grow: 1; /* Hace que el título ocupe el espacio disponible */
+    flex-grow: 1; 
     font-size: 24px;
     text-align: center;
     margin: 0;
 }
 
-/* Botón de volver atrás en el header */
 header a button {
-    background-color: black; /* Color de fondo igual que el header */
+    background-color: black; 
     color: white;
     padding: 8px 15px;
     cursor: pointer;
@@ -54,9 +49,8 @@ header a button:hover {
     background-color: #d3a51a;
 }
 
-/* Ajuste del contenido para que no quede oculto por el header */
 main {
-    margin-top: 90px; /* Deja suficiente espacio para el header */
+    margin-top: 90px; 
     padding: 20px;
     background-color: white;
     max-width: 600px;
@@ -68,7 +62,6 @@ main {
     box-sizing: border-box;
 }
 
-/* List styles */
 ul {
     list-style-type: none;
     padding: 0;
@@ -82,7 +75,6 @@ ul li {
     margin-bottom: 5px;
 }
 
-/* Form and button styling */
 form {
     display: flex;
     flex-direction: column;
@@ -103,7 +95,6 @@ input[type="number"] {
     border-radius: 4px;
 }
 
-/* Botón del formulario */
 button {
     background-color: black;
     color: white;
@@ -118,7 +109,6 @@ button:hover {
     background-color: #d3a51a;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     header {
         padding: 10px;
@@ -134,7 +124,7 @@ button:hover {
     }
 
     main {
-        margin-top: 70px; /* Ajuste para pantallas pequeñas */
+        margin-top: 70px; 
         padding: 15px;
     }
 

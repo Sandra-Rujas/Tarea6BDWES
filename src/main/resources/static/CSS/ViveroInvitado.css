@@ -40,10 +40,26 @@ header h1 {
     margin: 0;
     font-size: 24px;
     text-align: center;
-    flex: 1; /* Esto hace que el título ocupe todo el espacio disponible en el centro */
+    flex: 1; 
     display: flex;
-    justify-content: center; /* Asegura que el texto esté centrado */
-    align-items: center; /* Asegura que el texto esté centrado verticalmente */
+    justify-content: center; 
+    align-items: center; 
+}
+
+.logout-btn {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background-color: darkred;
 }
 
 .slider {
@@ -63,7 +79,7 @@ header h1 {
     object-fit: cover;
     position: absolute;
     opacity: 0;
-    animation: slide 20s infinite; /* Duración total de 20 segundos */
+    animation: slide 20s infinite;
 }
 
 @keyframes slide {
@@ -79,15 +95,15 @@ header h1 {
 }
 
 .slider img:nth-child(1) {
-    animation-delay: 0s; /* Primera imagen */
+    animation-delay: 0s; 
 }
 
 .slider img:nth-child(2) {
-    animation-delay: 6.67s; /* Segunda imagen */
+    animation-delay: 6.67s; 
 }
 
 .slider img:nth-child(3) {
-    animation-delay: 13.33s; /* Tercera imagen */
+    animation-delay: 13.33s; 
 }
 
 .main-content {

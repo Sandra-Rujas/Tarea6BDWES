@@ -19,9 +19,9 @@ header {
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    justify-content: center; 
+    align-items: center; 
+    background-color: rgba(0, 0, 0, 0.7); 
     color: white;
     padding: 10px 20px;
     box-sizing: border-box;
@@ -31,7 +31,7 @@ header {
 header .logo {
     display: flex;
     align-items: center;
-    margin-right: 10px; /* Ajusta el espacio entre el logo y el título */
+    margin-right: 10px; 
 }
 
 header .logo img {
@@ -43,10 +43,10 @@ header h1 {
     margin: 0;
     font-size: 24px;
     text-align: center;
-    flex: 1; /* Esto hace que el título ocupe todo el espacio disponible en el centro */
+    flex: 1; 
     display: flex;
-    justify-content: center; /* Asegura que el texto esté centrado */
-    align-items: center; /* Asegura que el texto esté centrado verticalmente */
+    justify-content: center; 
+    align-items: center; 
 }
 
 /* Logout Button */
@@ -70,7 +70,7 @@ main {
     padding: 20px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centrar las columnas horizontalmente */
+    justify-content: center; 
     z-index: 5;
 }
 
@@ -78,23 +78,23 @@ main {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    max-width: 1200px; /* Puedes ajustar el tamaño máximo */
+    max-width: 1200px; 
     width: 100%;
 }
 
 .column {
     flex: 1;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con algo de transparencia */
+    background-color: rgba(255, 255, 255, 0.8); 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra los elementos dentro de cada columna */
-    align-items: center; /* Centra el contenido horizontalmente */
-    text-align: center; /* Alinea el texto al centro */
-    height: 300px; /* Ajusta la altura según sea necesario */
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    height: 300px; 
 }
 
 .column h2 {
