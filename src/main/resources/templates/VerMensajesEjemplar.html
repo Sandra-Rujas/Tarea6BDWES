@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Mensajes de Ejemplares</title>
-    <link rel="stylesheet" href="../CSS/VerMensajesEjemplar.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ver Mensajes de Ejemplares</title>
+<link rel="stylesheet" href="../CSS/VerMensajesEjemplar.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="../Images/logosinfondo.png" alt="Logo">
-        </div>
-        <h1>Ver Mensajes de Ejemplares</h1>
-                 <a th:href="@{${session.userId == 1} ? '/ViveroAdmin' : '/ViveroPersonal'}">
-         <button class="logout-btn">Volver atrás</button></a>
-    </header>
+	<!-- Header -->
+	<header>
+		<div class="logo">
+			<img src="../Images/logosinfondo.png" alt="Logo">
+		</div>
+		<h1>Ver Mensajes de Ejemplares</h1>
+		<a
+			th:href="@{${session.userId == 1} ? '/ViveroAdmin' : '/ViveroPersonal'}">
+			<button class="logout-btn">Volver atrás</button>
+		</a>
+	</header>
 
-    <!-- Selección de ejemplar -->
-    <main>
-        <div class="ejemplares-container">
-            <h2>Selecciona un ejemplar</h2>
-            <form action="/VerMensajesEjemplar" method="POST">
-                <label for="idEjemplar">Ejemplar:</label>
-                <select name="idEjemplar" id="idEjemplar" required>
-                    <option value="">-- Seleccionar --</option>
-                    <option th:each="ejemplar : ${ejemplares}" th:value="${ejemplar.id}" th:text="${ejemplar.nombre}"></option>
-                </select>
-                <button type="submit">Ver Mensajes</button>
-            </form>
-        </div>
+	<!-- Selección de ejemplar -->
+	<main>
+		<div class="ejemplares-container">
+			<h2>Selecciona un ejemplar</h2>
+			<form action="/VerMensajesEjemplar" method="POST">
+				<label for="idEjemplar">Ejemplar:</label> <select name="idEjemplar"
+					id="idEjemplar" required>
+					<option value="">-- Seleccionar --</option>
+					<option th:each="ejemplar : ${ejemplares}"
+						th:value="${ejemplar.id}" th:text="${ejemplar.nombre}"></option>
+				</select>
+				<button type="submit">Ver Mensajes</button>
+			</form>
+		</div>
 
-        <!-- Mostrar mensajes -->
-        <div class="message-container" th:if="${mensajes != null}">
-            <h2>Mensajes del Ejemplar Seleccionado</h2>
-            <ul>
-                <li th:each="mensaje : ${mensajes}">
-                    <span th:text="${mensaje.fechaHora}"></span> - <span th:text="${mensaje.mensaje}"></span>
-                </li>
-            </ul>
-        </div>
+		<!-- Mostrar mensajes -->
+		<div class="message-container" th:if="${mensajes != null}">
+			<h2>Mensajes del Ejemplar Seleccionado</h2>
+			<ul>
+				<li th:each="mensaje : ${mensajes}"><span
+					th:text="${mensaje.fechaHora}"></span> - <span
+					th:text="${mensaje.mensaje}"></span></li>
+			</ul>
+		</div>
 
-        <!-- Mensaje si no hay mensajes -->
-        <div class="message-container" th:if="${mensajes == null}">
-            <p>No hay mensajes para este ejemplar.</p>
-        </div>
-    </main>
+		<!-- Mensaje si no hay mensajes -->
+		<div class="message-container" th:if="${mensajes == null}">
+			<p>No hay mensajes para este ejemplar.</p>
+		</div>
+	</main>
 </body>
 </html>

@@ -7,6 +7,8 @@
     <link rel="stylesheet" th:href="@{/CSS/ViveroInvitado.css}">
 </head>
 <body>
+
+	<!-- Header -->
     <header>
         <div class="logo">
             <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
@@ -15,12 +17,14 @@
         <a th:href="@{/salir}" class="button logout-btn">Salir</a>
     </header>
 
+	<!-- Slider de fotografías -->
     <div class="slider">
         <img th:src="@{../Images/slider01.jpg}" alt="Foto floral 01">
         <img th:src="@{../Images/slider02.jpg}" alt="Foto floral 02">
         <img th:src="@{../Images/slider03.jpg}" alt="Foto floral 03">
     </div>
 
+	<!-- Contenido principal -->
     <div class="main-content">
         <div class="button-container">
             <a th:href="@{/VerPlantas}" class="button">Ver Plantas</a>

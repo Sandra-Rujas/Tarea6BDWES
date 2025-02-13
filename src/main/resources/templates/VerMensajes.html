@@ -9,16 +9,20 @@
 <body>
 
 	<!-- Header -->
-<header>
-        <div class="logo">
-            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
-        </div>
-        <h1>Ver Mensajes</h1>
-                <a th:href="@{${session.userId == 1} ? '/ViveroAdmin' : '/ViveroPersonal'}">
-<button class="logout-btn">Volver atrás</button></a>
-    </header>
+	<header>
+		<div class="logo">
+			<img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+		</div>
+		<h1>Ver Mensajes</h1>
 
-	<!-- Menú de opciones -->
+		<!-- Botón para volver atrás, que redirige al inicio -->
+		<a
+			th:href="@{${session.userId == 1} ? '/ViveroAdmin' : '/ViveroPersonal'}">
+			<button class="logout-btn">Volver atrás</button>
+		</a>
+	</header>
+
+	<!-- Contenido principal. Menú de opciones. -->
 	<main class="container">
 		<h2>Seleccione una opción:</h2>
 		<form action="/VerMensajes" method="GET">
@@ -93,7 +97,6 @@
 			</div>
 		</div>
 
-		<!-- Sección 3: Ver mensajes por fecha -->
 		<!-- Sección 3: Ver mensajes por fecha -->
 		<div th:if="${seccion == 'mensajesPorFecha'}">
 			<h3>Selecciona un rango de fechas</h3>

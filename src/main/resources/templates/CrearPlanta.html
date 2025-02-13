@@ -17,9 +17,10 @@
     </header>
     </header>
 
-    <!-- Main Content -->
+    <!-- Contenido Principal -->
     <main>
         <form action="/CrearPlanta" method="POST">
+        <!-- Formulario de creación de la planta -->
             <div class="form-group">
                 <label for="codigo">Código de la Planta:</label>
                 <input type="text" id="codigo" name="codigo" required>
@@ -40,6 +41,7 @@
                 <button type="submit">Crear Planta</button>
             </div>
 
+			<!-- Mensaje de Error -->
             <div id="mensaje-error" style="color: red; display: none;">
                 <p>No se pudo registrar la planta. Verifique los datos ingresados.</p>
             </div>

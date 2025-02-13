@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Personas</title>
-    <link rel="stylesheet" th:href="@{../CSS/VerPersonas.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Personas</title>
+<link rel="stylesheet" th:href="@{../CSS/VerPersonas.css}">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img th:src="@{../Images/logosinfondo.png}" alt="Logo">
-        </div>
-        <h1>Ver Personas</h1>
-        <a th:href="@{/ViveroAdmin}"><button class="logout-btn">Volver atrás</button></a>
-    </header>
+	<!-- Header -->
+	<header>
+		<div class="logo">
+			<img th:src="@{../Images/logosinfondo.png}" alt="Logo">
+		</div>
+		<h1>Ver Personas</h1>
+		<a th:href="@{/ViveroAdmin}"><button class="logout-btn">Volver
+				atrás</button></a>
+	</header>
 
-    <!-- Main Content -->
-    <main class="container">
-        <h2>Personas Registradas:</h2>
+	<!-- Contenido principal -->
+	<main class="container">
+		<h2>Personas Registradas:</h2>
 
-        <!-- Si no hay personas -->
-        <div class="error-message" th:if="${personas == null or personas.isEmpty()}">
-            <p>No hay personas en la base de datos.</p>
-        </div>
+		<!-- Si no hay personas -->
+		<div class="error-message"
+			th:if="${personas == null or personas.isEmpty()}">
+			<p>No hay personas en la base de datos.</p>
+		</div>
 
-        <!-- Tabla de Personas -->
-        <table th:if="${personas != null and !personas.isEmpty()}">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="persona : ${personas}">
-                    <td th:text="${persona.nombre}"></td>
-                    <td th:text="${persona.email}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
+		<!-- Tabla de personas -->
+		<table th:if="${personas != null and !personas.isEmpty()}">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="persona : ${personas}">
+					<td th:text="${persona.nombre}"></td>
+					<td th:text="${persona.email}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 
 </body>
 </html>
