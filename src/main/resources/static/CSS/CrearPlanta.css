@@ -9,6 +9,9 @@ body {
     background-image: url('../Images/slider02.jpg');
     color: #333;
     line-height: 1.6;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
 }
 
 
