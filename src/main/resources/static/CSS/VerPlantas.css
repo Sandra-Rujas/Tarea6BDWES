@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('../IMG/slider03.jpg') no-repeat center center/cover;
+    background-image: url('../Images/slider02.jpg'); 
     color: white;
     text-align: center;
 }
@@ -24,7 +24,6 @@ header {
     z-index: 10;
 }
 
-/* Logo */
 header .logo {
     display: flex;
     align-items: center;
@@ -35,7 +34,6 @@ header .logo img {
     margin-right: 15px;
 }
 
-/* Título */
 header h1 {
     margin: 0;
     font-size: 26px;
@@ -85,7 +83,6 @@ header h1 {
     color: #c8e6c9;
 }
 
-/* Campos de entrada */
 .plant-item input {
     width: 60%;
     padding: 7px;
@@ -94,7 +91,6 @@ header h1 {
     font-size: 16px;
 }
 
-/* Botón de volver */
 .back-button {
     margin-top: 20px;
     padding: 12px 25px;
@@ -114,7 +110,6 @@ header h1 {
     transform: scale(1.05);
 }
 
-/* Tabla de plantas */
 table {
     width: 100%;
     border-collapse: collapse;
